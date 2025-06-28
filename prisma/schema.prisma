@@ -22,7 +22,9 @@ enum HouseType {
 }
 
 model Rental {
-  id          String    @id @default(uuid())
+  id          Int       @id @default(autoincrement())
+  publicId    String    @default(uuid()) @map("public_id")
+  slug        String
   price       Decimal
   beds        Int
   bath        Int
@@ -31,4 +33,5 @@ model Rental {
   isPopular   Boolean?
   houseType   HouseType
   houseImage  String?
+  createdAt   DateTime  @default(now())
 }
